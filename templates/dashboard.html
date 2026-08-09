@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - TCJC{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <h2>Welcome, {{ user.full_name }}</h2>
+
+    <div class="dashboard-cards">
+        <div class="card">
+            <h3>My Profile</h3>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+            {% if user.cell_group %}
+                <p><strong>Cell Group:</strong> {{ user.cell_group }}</p>
+            {% endif %}
+            {% if user.department %}
+                <p><strong>Department:</strong> {{ user.department.name }}</p>
+            {% endif %}
+            <p><strong>Role:</strong> {{ user.role }}</p>
+            <p><strong>Member Since:</strong> {{ user.date_joined.strftime('%d %B %Y') }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Church Gallery</a></li>
+                <li><a href="#">Upcoming Events</a></li>
+                <li><a href="#">Sermons</a></li>
+                <li><a href="#">Submit a Prayer Request</a></li>
+            </ul>
+        </div>
+
+        {% if user.role == 'super_admin' %}
+        <div class="card admin-card">
+            <h3>Admin Panel</h3>
+            <p>Manage all church members, departments, and content.</p>
+            <a href="#" class="btn btn-secondary">Go to Admin Panel</a>
+        </div>
+        {% elif user.role == 'dept_admin' %}
+        <div class="card admin-card">
+            <h3>Department Admin Panel</h3>
+            <p>Manage your department's members and meetings.</p>
+            <a href="#" class="btn btn-secondary">Go to Department Panel</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
