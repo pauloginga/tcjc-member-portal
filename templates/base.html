@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TCJC - Home of Love{% endblock %}</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TCJC Logo" class="logo">
+            <div>
+                <h1>THE CRUCIFIED JESUS CHURCH</h1>
+                <p class="motto">TCJC - Home of Love</p>
+            </div>
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+                <a href="{{ url_for('mens_register') }}">Men's Department</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Along Jogoo Road, Maringo Estate</p>
+        <p>Contact: 0718177015 | 0726471924 | 0722824394 | 0722600547</p>
+        <p>Founded by Archbishop Enos Oginga &middot; Pastored by Pastor Robert Ngoka &amp; Min. Aggy Ngoka</p>
+        <p>&copy; {{ current_year }} TCJC. All rights reserved.</p>
+    </footer>
+</body>
+</html>
