@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Login - TCJC{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <h2>Member Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p>Not registered yet? <a href="{{ url_for('register') }}">Register here</a> or
+        <a href="{{ url_for('mens_register') }}">join the Men's Department</a>.</p>
+</section>
+{% endblock %}
