@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Men's Department Registration - TCJC{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <h2>Men's Department Registration</h2>
+   <p class="form-intro">
+        "Iron sharpens iron, so one man sharpens another." — Proverbs 27:17<br><br>
+        The TCJC Men's Department is a brotherhood built on faith, discipline, and service —
+        standing together to lead our homes, protect our church, and serve our community with
+        strength and humility. Join us and grow alongside men who take their walk with Christ seriously.
+    </p>
+    <form method="POST" action="{{ url_for('mens_register') }}">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="occupation">Occupation</label>
+        <input type="text" id="occupation" name="occupation">
+
+        <label for="skills">Skills / Talents</label>
+        <input type="text" id="skills" name="skills" placeholder="e.g. carpentry, singing, public speaking">
+
+        <label for="marital_status">Marital Status</label>
+        <select id="marital_status" name="marital_status">
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Widowed">Widowed</option>
+        </select>
+
+        <label for="sub_committee">Preferred Sub-Committee (optional)</label>
+        <select id="sub_committee" name="sub_committee">
+            <option value="">-- None yet --</option>
+            <option value="Ushering">Ushering</option>
+            <option value="Welfare">Welfare</option>
+            <option value="Outreach">Outreach</option>
+            <option value="Security">Security</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Register for Men's Department</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</section>
+{% endblock %}
