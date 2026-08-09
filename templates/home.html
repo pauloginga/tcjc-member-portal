@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home - TCJC{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TCJC Logo" class="hero-logo">
+    <h2>Welcome to The Crucified Jesus Church</h2>
+    <p class="verse">
+        "But God forbid that I should glory, save in the cross of our Lord Jesus Christ,
+        by whom the world is crucified unto me, and I unto the world."
+    </p>
+    <p class="verse-ref">Galatians 6:14</p>
+
+    <div class="hero-actions">
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Join as a Member</a>
+        <a href="{{ url_for('mens_register') }}" class="btn btn-secondary">Men's Department</a>
+    </div>
+</section>
+
+<section class="about">
+    <h3>About Us</h3>
+    <p>
+        Founded by Archbishop Enos Oginga, TCJC is pastored by Pastor Robert Ngoka
+        and Min. Aggy Ngoka. We are located along Jogoo Road, Maringo Estate — a home
+        of love for all who seek Christ.
+    </p>
+</section>
+{% endblock %}
